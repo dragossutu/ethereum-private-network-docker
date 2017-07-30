@@ -1,0 +1,9 @@
+[Eth]
+NetworkId = 9999
+
+[Node]
+DataDir = "/tmp/blockchainData"
+
+[Node.P2P]
+MaxPeers = 0
+NoDiscovery = true
