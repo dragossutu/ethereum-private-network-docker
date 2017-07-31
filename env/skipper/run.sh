@@ -14,7 +14,7 @@ docker run \
     --tty \
     --user $(id -u):$(id -g) \
     --volume ${blockchainTestData}:/tmp/blockchainData \
-    drgsutu/ethereum-client-go:alpine --config config.toml init customGenesis.json
+    drgsutu/ethereum-client-go:alpine init customGenesis.json
 
 # Run Geth node
 docker run \
@@ -22,4 +22,4 @@ docker run \
     --name geth \
     --user $(id -u):$(id -g) \
     --volume ${blockchainTestData}:/tmp/blockchainData \
-    drgsutu/ethereum-client-go:alpine --config config.toml
+    drgsutu/ethereum-client-go:alpine
