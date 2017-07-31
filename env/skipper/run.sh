@@ -6,13 +6,13 @@ currentDir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 blockchainTestData="${currentDir}/../blockchainTestData/local"
 
 # Cleanup
-if docker inspect geth >& /dev/null; then
-    docker rm --force --volumes geth
+if docker container inspect geth >& /dev/null; then
+    docker container rm --force --volumes geth
 fi
 docker system prune --force
 
 # Initialize blockchain
-docker run \
+docker container run \
     --rm \
     --tty \
     --user $(id -u):$(id -g) \
@@ -20,7 +20,7 @@ docker run \
     drgsutu/ethereum-client-go:alpine init customGenesis.json
 
 # Run Geth node
-docker run \
+docker container run \
     --detach \
     --name geth \
     --user $(id -u):$(id -g) \
