@@ -1,8 +1,9 @@
 [Eth]
 NetworkId = 9999
+EthashDatasetDir = "/tmp/.ethash"
 
 [Node]
-DataDir = "/tmp/blockchainData"
+DataDir = "/tmp/.ethereum"
 
 [Node.P2P]
 MaxPeers = 0

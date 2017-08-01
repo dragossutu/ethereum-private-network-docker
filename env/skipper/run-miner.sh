@@ -12,5 +12,6 @@ docker container run \
     --rm \
     --tty \
     --user $(id -u):$(id -g) \
-    --volume ${blockchainTestData}:/tmp/blockchainData \
+    --volume "${blockchainTestData}/.ethash":/tmp/.ethash \
+    --volume "${blockchainTestData}/.ethereum":/tmp/.ethereum \
     drgsutu/ethereum-client-go:alpine --mine --minerthreads=4
