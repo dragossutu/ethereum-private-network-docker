@@ -11,19 +11,10 @@ if docker container inspect geth >& /dev/null; then
 fi
 docker system prune --force
 
-# Initialize blockchain
-docker container run \
-    --rm \
-    --tty \
-    --user $(id -u):$(id -g) \
-    --volume "${blockchainTestData}/.ethash":/tmp/.ethash \
-    --volume "${blockchainTestData}/.ethereum":/tmp/.ethereum \
-    drgsutu/ethereum-client-go:alpine init customGenesis.json
-
 # Run Geth node
 docker container run \
     --detach \
     --name geth \
-    --user $(id -u):$(id -g) \
-    --volume ${blockchainTestData}:/tmp/blockchainData \
+    --volume "${blockchainTestData}/ethash":/tmp/.ethash \
+    --volume "${blockchainTestData}/ethereum":/tmp/.ethereum \
     drgsutu/ethereum-client-go:alpine
