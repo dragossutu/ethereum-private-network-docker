@@ -14,6 +14,7 @@ docker system prune --force
 # Run Geth node
 docker container run \
     --detach \
+    --label project=eth-dapp-dev \
     --name geth \
     --volume "${blockchainTestData}/ethash":/tmp/.ethash \
     --volume "${blockchainTestData}/ethereum":/tmp/.ethereum \

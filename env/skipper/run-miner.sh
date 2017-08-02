@@ -9,6 +9,7 @@ blockchainTestData="${currentDir}/../blockchainTestData/local"
 docker container run \
     --interactive \
     --name geth-miner \
+    --label project=eth-dapp-dev \
     --rm \
     --tty \
     --volume "${blockchainTestData}/ethash":/tmp/.ethash \
