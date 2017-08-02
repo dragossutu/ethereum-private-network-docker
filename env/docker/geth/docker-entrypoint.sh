@@ -6,7 +6,7 @@ keystoreDir='/tmp/.ethereum/keystore'
 numberOfAccounts=4
 
 # if command starts with an option, prepend executable /geth
-if [ "${1:0:1}" = '-' ]; then
+if [ "${1}" != "/geth" ]; then
 	set -- /geth "$@"
 fi
 
