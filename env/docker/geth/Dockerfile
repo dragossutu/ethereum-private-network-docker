@@ -1,5 +1,13 @@
 FROM ethereum/client-go:alpine
 
-COPY ["customGenesis.json", "config.toml", "/"]
+COPY ["customGenesis.json", "config.toml", "password.txt", "/"]
 
-ENTRYPOINT ["/geth", "--config", "config.toml"]
+RUN apk add --update jq
+
+COPY ["customGenesis.json", "config.toml", "password.txt", "/"]
+COPY docker-entrypoint.sh /entrypoint.sh
+
+# create accounts and initialize blockchain if there are no accounts created
+ENTRYPOINT ["/entrypoint.sh"]
+
+CMD ["/geth", "--config", "config.toml"]
