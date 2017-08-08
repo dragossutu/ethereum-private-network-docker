@@ -7,7 +7,7 @@ numberOfAccounts=${NUMBER_OF_ACCOUNTS:-4}
 
 # if command starts with an option, prepend executable /geth
 if [ "${1}" != "/geth" ]; then
-	set -- /geth "$@"
+	set -- /geth --config config.toml "$@"
 fi
 
 # make sure keystore dir exists
