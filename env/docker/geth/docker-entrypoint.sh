@@ -22,15 +22,18 @@ if [ ! "$(ls -A ${keystoreDir})" ]; then
         let "numberOfAccounts=numberOfAccounts-1"
     done
 
+    # temporary hack to fix user privileges problems
+    cp /customGenesisExample.json /tmp/customGenesis.json
+
     printf "\n%s\n" "Adding accounts to genesis block json"
     for f in $(ls ${keystoreDir}); do
         address=$(jq -r '.address' "$keystoreDir/$f")
-        jq --arg address $address '.alloc += {($address):{"balance":"20000000000000000000"}}' customGenesis.json > tmpCustomGenesis.json
-        mv tmpCustomGenesis.json customGenesis.json
+        jq --arg address $address '.alloc += {($address):{"balance":"20000000000000000000"}}' /tmp/customGenesis.json > /tmp/tmpCustomGenesis.json
+        mv /tmp/tmpCustomGenesis.json /tmp/customGenesis.json
     done
 
     printf "\n%s\n" "Initializing genesis block"
-    /geth --config config.toml init customGenesis.json
+    /geth --config config.toml init /tmp/customGenesis.json
 fi
 
 exec "$@"
