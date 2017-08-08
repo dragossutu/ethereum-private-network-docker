@@ -12,6 +12,7 @@ docker container run \
     --label project=eth-dapp-dev \
     --rm \
     --tty \
+    --user $(id --user):$(id --group) \
     --volume "${blockchainTestData}/ethash":/tmp/.ethash \
     --volume "${blockchainTestData}/ethereum":/tmp/.ethereum \
     drgsutu/ethereum-client-go:alpine attach ipc:/tmp/.ethereum/geth.ipc
