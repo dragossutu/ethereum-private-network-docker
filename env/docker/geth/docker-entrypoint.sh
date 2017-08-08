@@ -3,7 +3,7 @@
 set -uo pipefail
 
 keystoreDir='/tmp/.ethereum/keystore'
-numberOfAccounts=4
+numberOfAccounts=${NUMBER_OF_ACCOUNTS:-4}
 
 # if command starts with an option, prepend executable /geth
 if [ "${1}" != "/geth" ]; then
