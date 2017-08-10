@@ -2,8 +2,9 @@
 
 set -uo pipefail
 
-keystoreDir='/tmp/.ethereum/keystore'
 numberOfAccounts=${NUMBER_OF_ACCOUNTS:-4}
+keystoreDir='/tmp/.ethereum/keystore'
+outputFormat="\n**** %s\n"
 
 # if command starts with an option, prepend executable /geth
 if [ "${1}" != "/geth" ]; then
@@ -16,7 +17,7 @@ if [ -d "$keystoreDir" ]; then
 fi
 
 if [ ! "$(ls -A ${keystoreDir})" ]; then
-    printf "\n%s\n" "Creating accounts"
+    printf ${outputFormat} "Creating accounts"
     while [ "$numberOfAccounts" -gt 0 ]; do
         /geth --config config.toml account new --password password.txt
         let "numberOfAccounts=numberOfAccounts-1"
@@ -25,15 +26,16 @@ if [ ! "$(ls -A ${keystoreDir})" ]; then
     # temporary hack to fix user privileges problems
     cp /customGenesisExample.json /tmp/customGenesis.json
 
-    printf "\n%s\n" "Adding accounts to genesis block json"
+    printf ${outputFormat} "Adding accounts to genesis block json"
     for f in $(ls ${keystoreDir}); do
         address=$(jq -r '.address' "$keystoreDir/$f")
         jq --arg address $address '.alloc += {($address):{"balance":"20000000000000000000"}}' /tmp/customGenesis.json > /tmp/tmpCustomGenesis.json
         mv /tmp/tmpCustomGenesis.json /tmp/customGenesis.json
     done
 
-    printf "\n%s\n" "Initializing genesis block"
+    printf ${outputFormat} "**** Initializing genesis block"
     /geth --config config.toml init /tmp/customGenesis.json
 fi
 
+printf ${outputFormat} "Running container CMD"
 exec "$@"

@@ -13,10 +13,12 @@ docker system prune --force
 
 # Run Geth node
 docker container run \
-    --detach \
+    --interactive \
     --label project=eth-dapp-dev \
     --name geth \
+    --rm \
+    --tty \
     --user $(id --user):$(id --group) \
     --volume "${blockchainTestData}/ethash":/tmp/.ethash \
     --volume "${blockchainTestData}/ethereum":/tmp/.ethereum \
-    drgsutu/ethereum-client-go:alpine
+    drgsutu/ethereum-client-go:alpine --mine --minerthreads=1
