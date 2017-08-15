@@ -2,23 +2,13 @@
 
 set -e
 
-currentDir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-blockchainTestData="${currentDir}/../blockchainTestData/local"
+cd "$(dirname "${BASH_SOURCE[0]}")"
 
-# Cleanup
-if docker container inspect geth >& /dev/null; then
-    docker container rm --force --volumes geth
-fi
-docker system prune --force
+./cleanup.sh
 
-# Run Geth node
-docker container run \
-    --interactive \
+docker network create \
     --label project=eth-dapp-dev \
-    --name geth \
-    --rm \
-    --tty \
-    --user $(id --user):$(id --group) \
-    --volume "${blockchainTestData}/ethash":/tmp/.ethash \
-    --volume "${blockchainTestData}/ethereum":/tmp/.ethereum \
-    drgsutu/ethereum-client-go:alpine --mine --minerthreads=1
+    --subnet 172.20.0.0/16 \
+    eth-dev-network
+
+./run-miner.sh
