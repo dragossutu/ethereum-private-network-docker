@@ -1,10 +1,9 @@
 [Eth]
-NetworkId = 9999
+NetworkId = 875129847
 EthashDatasetDir = "/tmp/.ethash"
 
 [Node]
 DataDir = "/tmp/.ethereum"
 
 [Node.P2P]
-MaxPeers = 0
 NoDiscovery = true
