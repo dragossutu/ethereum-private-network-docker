@@ -15,4 +15,4 @@ docker container run \
     --user $(id --user):$(id --group) \
     --volume "${blockchainTestData}/ethash":/tmp/.ethash \
     --volume "${blockchainTestData}/ethereum":/tmp/.ethereum \
-    drgsutu/ethereum-client-go:alpine --mine --minerthreads 1
+    drgsutu/ethereum-client-go:alpine --mine --minerthreads 1 --rpc --rpcaddr "0.0.0.0"
