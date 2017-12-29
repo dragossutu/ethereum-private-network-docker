@@ -5,6 +5,9 @@ set -e
 currentDir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 blockchainDataDir="${currentDir}/../blockchainData/local"
 
+# make sure blockchain data dir exists, else Docker will create it with root as owner
+mkdir --parents --verbose ${blockchainDataDir}/{ethash,ethereum}
+
 # Run Geth node
 docker container run \
     --detach \
