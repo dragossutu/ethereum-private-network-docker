@@ -3,8 +3,7 @@
 set -e
 
 currentDir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-blockchainTestData="${currentDir}/../blockchainTestData/local"
+blockchainDataDir="${currentDir}/../blockchainData/local"
 
-rm --force --recursive ${blockchainTestData}/eth*
-mkdir -p "$blockchainTestData/ethereum/keystore"
-mkdir -p "$blockchainTestData/ethash"
+rm --force --recursive --verbose ${blockchainDataDir}/eth*
+mkdir --parents --verbose ${blockchainDataDir}/{ethash,ethereum/keystore}

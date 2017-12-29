@@ -3,7 +3,7 @@
 set -e
 
 currentDir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-blockchainTestData="${currentDir}/../blockchainTestData/local"
+blockchainDataDir="${currentDir}/../blockchainData/local"
 
 docker container run \
     --interactive \
@@ -13,6 +13,6 @@ docker container run \
     --rm \
     --tty \
     --user $(id --user):$(id --group) \
-    --volume "${blockchainTestData}/ethash":/tmp/.ethash \
-    --volume "${blockchainTestData}/ethereum":/tmp/.ethereum \
+    --volume "${blockchainDataDir}/ethash":/tmp/.ethash \
+    --volume "${blockchainDataDir}/ethereum":/tmp/.ethereum \
     drgsutu/ethereum-client-go:alpine attach ipc:/tmp/.ethereum/geth.ipc

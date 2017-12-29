@@ -3,7 +3,7 @@
 set -e
 
 currentDir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-blockchainTestData="${currentDir}/../blockchainTestData/local"
+blockchainDataDir="${currentDir}/../blockchainData/local"
 
 # Run Geth node
 docker container run \
@@ -13,6 +13,6 @@ docker container run \
     --name geth-miner \
     --network eth-private-network \
     --user $(id --user):$(id --group) \
-    --volume "${blockchainTestData}/ethash":/tmp/.ethash \
-    --volume "${blockchainTestData}/ethereum":/tmp/.ethereum \
+    --volume "${blockchainDataDir}/ethash":/tmp/.ethash \
+    --volume "${blockchainDataDir}/ethereum":/tmp/.ethereum \
     drgsutu/ethereum-client-go:alpine --mine --minerthreads 1 --rpc --rpcaddr "0.0.0.0"
