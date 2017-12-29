@@ -19,7 +19,7 @@ fi
 
 # make sure keystore dir exists
 if [ -d "$keystoreDir" ]; then
-    mkdir --parents ${keystoreDir}
+    mkdir -p ${keystoreDir}
 fi
 
 # create accounts if no accounts exist
