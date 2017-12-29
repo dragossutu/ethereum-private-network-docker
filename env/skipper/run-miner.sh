@@ -9,9 +9,9 @@ blockchainTestData="${currentDir}/../blockchainTestData/local"
 docker container run \
     --detach \
     --ip 172.20.0.2 \
-    --label project=eth-dapp-dev \
-    --name geth \
-    --network eth-dev-network \
+    --label project=eth-private-network \
+    --name geth-miner \
+    --network eth-private-network \
     --user $(id --user):$(id --group) \
     --volume "${blockchainTestData}/ethash":/tmp/.ethash \
     --volume "${blockchainTestData}/ethereum":/tmp/.ethereum \

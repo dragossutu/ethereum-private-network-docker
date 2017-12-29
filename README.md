@@ -1,2 +1,3 @@
-# eth-dapp-dev
-Ethereum DApps development environment bootstrap using Docker containers.
+# ethereum-private-network-docker
+Ethereum private network in Docker containers.
+Useful for Ethereum DApp development.

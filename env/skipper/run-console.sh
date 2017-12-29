@@ -9,7 +9,7 @@ docker container run \
     --interactive \
     --name geth-console \
     --ipc container:geth \
-    --label project=eth-dapp-dev \
+    --label project=eth-private-network \
     --rm \
     --tty \
     --user $(id --user):$(id --group) \

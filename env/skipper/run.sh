@@ -7,8 +7,8 @@ cd "$(dirname "${BASH_SOURCE[0]}")"
 ./cleanup.sh
 
 docker network create \
-    --label project=eth-dapp-dev \
+    --label project=eth-private-network \
     --subnet 172.20.0.0/16 \
-    eth-dev-network
+    eth-private-network
 
 ./run-miner.sh
