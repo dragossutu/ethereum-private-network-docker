@@ -8,7 +8,6 @@ blockchainDataDir="${currentDir}/../blockchainData/local"
 docker container run \
     --interactive \
     --name geth-console \
-    --ipc container:geth \
     --label project=eth-private-network \
     --rm \
     --tty \
