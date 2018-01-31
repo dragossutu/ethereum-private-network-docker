@@ -1,9 +1,16 @@
 [Eth]
-NetworkId = 875129847
+NetworkId = 721337
 EthashDatasetDir = "/tmp/.ethash"
 
 [Node]
 DataDir = "/tmp/.ethereum"
+HTTPHost = "0.0.0.0"
+HTTPPort = 8545
+HTTPCors = ["*"]
+HTTPModules = ["admin", "db", "debug", "eth", "miner", "net", "personal", "shh", "txpool", "web3"]
+WSHost = "0.0.0.0"
+WSOrigins = ["*"]
+WSModules = ["admin", "db", "debug", "eth", "miner", "net", "personal", "shh", "txpool", "web3"]
 
 [Node.P2P]
 NoDiscovery = true
