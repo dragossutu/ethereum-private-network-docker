@@ -4,7 +4,7 @@ set -e
 
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
-./cleanup.sh
+./cleanup-docker.sh
 
 docker network create \
     --label project=eth-private-network \
