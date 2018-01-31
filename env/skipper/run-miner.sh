@@ -2,8 +2,8 @@
 
 set -e
 
-currentDir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-dataDir="${currentDir}/../data"
+scriptDir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+dataDir="${scriptDir}/../data"
 
 minerIPAddress=${1:-172.20.0.2}
 
