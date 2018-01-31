@@ -2,7 +2,7 @@
 
 set -uo pipefail
 
-numberOfAccounts=${NUMBER_OF_ACCOUNTS:-2}
+numberOfAccounts=${NUMBER_OF_ACCOUNTS:-7}
 keystoreDir="/tmp/.ethereum/keystore"
 outputFormat="\n**** %s\n"
 
