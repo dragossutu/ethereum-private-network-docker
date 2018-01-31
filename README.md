@@ -17,13 +17,13 @@ All commands are run from project root dir.
 
 3. Attach another geth:
     ```bash
-    ./skipper/run-console.sh
+    ./skipper/run-attach.sh
     ```
 
 
 Cleanup containers:
 ```bash
-./skipper/cleanup.sh
+./skipper/cleanup-docker.sh
 ```
 
 Cleanup blockchain data:
@@ -31,7 +31,7 @@ Cleanup blockchain data:
 ./skipper/cleanup-blockchain.sh
 ```
 
-Connect Mist to the miner:
+Connect Mist to the miner, have to remove `--ipcdisable` from `./skipper/run-miner.sh` Docker run command:
 ```bash
 mist --rpc ./env/blockchainTestData/local/ethereum/geth.ipc
 ```
