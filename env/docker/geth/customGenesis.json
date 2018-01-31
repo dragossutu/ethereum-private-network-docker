@@ -1,11 +1,16 @@
 {
   "alloc": {},
-  "coinbase": "0x3333333333333333333333333333333333333333",
+  "coinbase": "0x0000000000000000000000000000000000000000",
   "config": {
-    "chainId": 15,
-    "homesteadBlock": 0,
+    "byzantiumBlock": 0,
+    "chainId": 721337,
+    "daoForkBlock": 0,
+    "daoForkSupport": true,
+    "eip150Block": 0,
     "eip155Block": 0,
-    "eip158Block": 0
+    "eip158Block": 0,
+    "ethash": {},
+    "homesteadBlock": 0
   },
   "difficulty": "0x400",
   "extraData": "0x00",
