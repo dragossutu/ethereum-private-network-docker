@@ -3,12 +3,12 @@
 set -e
 
 currentDir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-blockchainDataDir="${currentDir}/../blockchainData/local"
+dataDir="${currentDir}/../data"
 
 minerIPAddress=${1:-172.20.0.2}
 
 # make sure blockchain data dir exists, else Docker will create it with root as owner
-mkdir --parents --verbose ${blockchainDataDir}/{ethash,ethereum}
+mkdir --parents --verbose ${dataDir}/{ethash,ethereum}
 
 # Run Geth node
 docker container run \
@@ -18,8 +18,8 @@ docker container run \
     --name geth-miner \
     --network eth-private-network \
     --user $(id --user):$(id --group) \
-    --volume "${blockchainDataDir}/ethash":/tmp/.ethash \
-    --volume "${blockchainDataDir}/ethereum":/tmp/.ethereum \
+    --volume "${dataDir}/ethash":/tmp/.ethash \
+    --volume "${dataDir}/ethereum":/tmp/.ethereum \
     drgsutu/ethereum-client-go:alpine \
         --identity "dev-miner" \
         --ipcdisable \
